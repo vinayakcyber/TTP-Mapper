@@ -53,10 +53,12 @@ Alternatively, modify config.yaml with your settings.
 ### Usage
 Run the tool with the following command:
 ```bash
-python ttp_mapper.py --malware "Emotet" --output mapped_ttps.json
+python ttp_mapper.py <entity-type> <duration> <duration-length> <top-entities>
 ```
-- --malware: Specify the malware or threat actor name (as in OpenCTI).
-- --output: Define the output file name.
+- <entity-type>: (provide integer value) :> 1 : "Vulnerability", 2 : "Malware", 3 : "Threat Actors.
+- <duration>: (provide string value) :> "day", "week", "month", "quarter", "year"
+- <duration-length>: (provide integer value) :> Example: 1, 2, 3... for quarter: 1 quarter = past 3 months
+- <top-entities>: How many top Entities to consider for correlation? (provide integer value)
 
 Example output:
 
