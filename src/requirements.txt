@@ -1,0 +1,4 @@
+pycti==6.4.10
+requests
+urllib3
+python-dotenv
