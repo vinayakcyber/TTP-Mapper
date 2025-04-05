@@ -29,10 +29,10 @@ TTP Mapper is a tool designed to integrate Tactics, Techniques, and Procedures (
 1. Clone the repository:
  ```bash
  git clone https://github.com/vinayakcyber/TTP-Mapper.git
- cd src
+ cd ./TTP-Mapper/src
  ```
 
-2. Install dependencies:
+2. Install dependencies(Preferrably in Virtualenv):
 ```bash
 pip install -r requirements.txt
 ```
