@@ -16,8 +16,42 @@ TTP Mapper is a tool designed to integrate Tactics, Techniques, and Procedures (
 - **Incident Enrichment**: Augment MDR incidents with contextual CTI data.
 - **Reporting**: Provide actionable insights for security analysts and leadership.
 
-### Future Works
+## Future Works
 1. Weekly Risk-rating generation
+
+## How It Works
+
+```mermaid
+graph LR
+A[Start Part 1] --> B[Get OpenCTI Reports for a specific Duration]
+    B --> C[Extract Active Threats]
+    C --> D{Threats Found?}
+    D -->|No| E[No Threats]
+    D -->|Yes| F[Fetch CTI TTPs]
+    F --> G[End Part 1]
+    E --> G
+```
+```mermaid
+graph LR
+    H[Start Part 2] --> I[Connect to MDR]
+    I --> J[Filter NOT False Positives]
+    J --> K[Fetch MDR TTPs]
+    K --> L[End Part 2]
+```
+```mermaid
+graph LR
+    M[Start Part 3] --> N[Load CTI TTPs]
+    N --> O[Load MDR TTPs]
+    O --> P[Map TTPs]
+    P --> Q[Export Results]
+    Q --> R[End]
+```
+1. **CTI Data Retrieval**: When a new report/feed gets added to the TIP and once it has TTPs and Entities mapped to it. Basically it queries OpenCTI for TTPs linked to the specified malware/threat actor.
+2. **MDR Data Ingestion**: Pulls TTPs from NOT false positive incidents in the MDR system.
+   _NOTE_: Thing to consider, when getting data from MDR, their can be PRE-EMPTIVE or POST blocks or Preventions, so it depends on the data that is fed into, through the (mdr_handler)[mdr_handler.py] file.
+3. **TTP Mapping**: Matches CTI TTPs to MDR TTPs based on MITRE ATT&CK or custom frameworks.
+4. **Result**: When Mapping is done, if a technique is more active, its score will be higher(MITRE ATTACK scoring), and can help to find the holes in the environment.
+5. **Output Generation**: Produces a report of mapped TTPs with incident references.
 
 ## Prerequisites
 - Python 3.9+
@@ -75,14 +109,6 @@ Example output:
   ]
 }
 ```
-
-### How It Works
-1. **CTI Data Retrieval**: When a new report/feed gets added to the TIP and once it has TTPs and Entities mapped to it. Basically it queries OpenCTI for TTPs linked to the specified malware/threat actor.
-2. **MDR Data Ingestion**: Pulls TTPs from NOT false positive incidents in the MDR system.
-   _NOTE_: Thing to consider, when getting data from MDR, their can be PRE-EMPTIVE or POST blocks or Preventions, so it depends on the data that is fed into, through the (mdr_handler)[mdr_handler.py] file.
-3. **TTP Mapping**: Matches CTI TTPs to MDR TTPs based on MITRE ATT&CK or custom frameworks.
-4. **Result**: When Mapping is done, if a technique is more active, its score will be higher(MITRE ATTACK scoring), and can help to find the holes in the environment.
-5. **Output Generation**: Produces a report of mapped TTPs with incident references.
 
 ### Contributing
 Contributions are welcome! Please:
