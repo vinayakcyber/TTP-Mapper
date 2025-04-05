@@ -20,7 +20,7 @@ TTP Mapper is a tool designed to integrate Tactics, Techniques, and Procedures (
 1. Weekly Risk-rating generation
 
 ## How It Works
-
+### part 1
 ```mermaid
 graph LR
 A[Start Part 1] --> B[Get OpenCTI Reports for a specific Duration]
@@ -31,6 +31,7 @@ A[Start Part 1] --> B[Get OpenCTI Reports for a specific Duration]
     F --> G[End Part 1]
     E --> G
 ```
+### part 2
 ```mermaid
 graph LR
     H[Start Part 2] --> I[Connect to MDR]
@@ -38,6 +39,7 @@ graph LR
     J --> K[Fetch MDR TTPs]
     K --> L[End Part 2]
 ```
+### part 3
 ```mermaid
 graph LR
     M[Start Part 3] --> N[Load CTI TTPs]
