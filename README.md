@@ -82,9 +82,8 @@ OPENCTI_URL=https://your-opencti-instance.com
 OPENCTI_TOKEN=your-api-token
 MDR_API_URL=https://your-mdr-api-endpoint.com
 MDR_API_KEY=your-mdr-api-key
-OUTPUT_FORMAT=json  # Options: json, csv
+OUTPUT_FORMAT=xml
 ```
-Alternatively, modify config.yaml with your settings.
 
 ### Usage
 Run the tool with the following command:
